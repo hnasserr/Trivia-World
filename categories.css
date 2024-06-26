@@ -39,7 +39,7 @@ body {
   overflow-wrap: break-word;
   font-size: 1rem;
   padding: 0.5rem;
-  width: 100%;
+  /* width: 100%; */
 }
 
 /* .flip-card-img {

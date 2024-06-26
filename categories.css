@@ -31,13 +31,13 @@ body {
   min-width: 10rem;
   height: 40vh;
   perspective: 1000px;
-  text-align: center;
 }
 
 .flip-card h1 {
   display: flex;
   align-items: center;
   justify-content: center;
+  text-align: center;
   background-color: white;
   border-radius: 40px;
   overflow-wrap: break-word;
@@ -81,7 +81,7 @@ body {
   background-color: #bbb;
   color: black;
   background-size: 100%;
-  background-position: center;
+  background-position: center; 
   background-size: cover;
   /* background-repeat: no-repeat; */
 }
@@ -91,7 +91,34 @@ body {
 }
 
 .flip-card-back {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   background-color: #2980b9;
   color: white;
   transform: rotateY(180deg);
+}
+
+.start-button-div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
+}
+
+.start-quiz-button {
+  background-color: red;
+  font-family: 'Roboto Mono', monospace;
+  font-size: 1rem;
+  color: white;
+  text-decoration: none;
+  padding: 0.5rem 1rem;
+  text-align: center;
+  border-radius: 30px;
+  transition: transform 0.2s;
+  box-shadow: 0 4 15px rgba(0, 0, 0, 0.2);
+}
+
+.start-quiz-button:hover {
+  transform: translateY(-5px);
 }

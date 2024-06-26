@@ -41,16 +41,20 @@ function displayCards(categories) {
     // img.alt = 'no img';
     // img.classList.add('flip-card-img');
 
-    
-
     const flipCardBack = document.createElement('div');
     flipCardBack.classList.add('flip-card-back');
 
+    const buttonDiv = document.createElement('div');
+    buttonDiv.classList.add('start-button-div');
     const startQuizButton = document.createElement('a');
+
+    startQuizButton.href = 'quiz.html'
+    startQuizButton.innerText = 'Start Quiz!'
     startQuizButton.classList.add('start-quiz-button');
     
     flipCardFront.append(title);
-    flipCardBack.append(startQuizButton);
+    buttonDiv.append(startQuizButton)
+    flipCardBack.append(buttonDiv);
     flipCardInner.append(flipCardFront);
     flipCardInner.append(flipCardBack);
     flipCard.append(flipCardInner);
@@ -61,7 +65,7 @@ function displayCards(categories) {
 // displayCards(staticCategories.trivia_categories);
 
 function formatTitle(title) {
-  if (title.includes(':')) {
+  if (title.includes(': ')) {
     const titleArray = title.split(': ');
     console.log(titleArray);
     return titleArray[1];

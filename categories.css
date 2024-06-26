@@ -31,14 +31,19 @@ body {
   min-width: 10rem;
   height: 40vh;
   perspective: 1000px;
+  text-align: center;
 }
 
 .flip-card h1 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   background-color: white;
   border-radius: 40px;
   overflow-wrap: break-word;
   font-size: 1rem;
   padding: 0.5rem;
+  height: 2.2rem;
   /* width: 100%; */
 }
 
@@ -76,7 +81,9 @@ body {
   background-color: #bbb;
   color: black;
   background-size: 100%;
-  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  /* background-repeat: no-repeat; */
 }
 
 .start-quiz-button {

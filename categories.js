@@ -33,7 +33,8 @@ function displayCards(categories) {
     flipCardFront.style = `background-image: url("assets/${categories[i].id}.png")`;
     
     const title = document.createElement('h1');
-    title.innerText = categories[i].name;
+    const editedTitle = formatTitle(categories[i].name);
+    title.innerText = editedTitle;
 
     // const img = document.createElement('img');
     // img.src = `assets/${categories[i].id}.png`
@@ -58,4 +59,14 @@ function displayCards(categories) {
 }
 
 // displayCards(staticCategories.trivia_categories);
+
+function formatTitle(title) {
+  if (title.includes(':')) {
+    const titleArray = title.split(': ');
+    console.log(titleArray);
+    return titleArray[1];
+  } else {
+    return title;
+  }
+}
 

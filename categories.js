@@ -1,5 +1,5 @@
-
 console.log(staticCategories);
+
 function fetchCategories() {
   fetch('https://opentdb.com/api_category.php')
     .then((response) => {
@@ -16,8 +16,9 @@ function fetchCategories() {
 
 fetchCategories();
 
+
 function displayCards(categories) {
-  //Get the categoriesContainer from HTML and save it in a div.
+  //Get the categoriesContainer from HTML and save it in a variable.
   const div = document.getElementById('categoriesContainer');
   console.log(categories);
 
@@ -48,7 +49,7 @@ function displayCards(categories) {
     buttonDiv.classList.add('start-button-div');
     const startQuizButton = document.createElement('a');
 
-    startQuizButton.href = 'quiz.html'
+    startQuizButton.href = `quiz.html?id=${categories[i].id}&difficulty=medium`
     startQuizButton.innerText = 'Start Quiz!'
     startQuizButton.classList.add('start-quiz-button');
     

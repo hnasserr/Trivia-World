@@ -86,9 +86,7 @@ body {
   /* background-repeat: no-repeat; */
 }
 
-.start-quiz-button {
-  border: 10px solid;
-}
+
 
 .flip-card-back {
   display: flex;
@@ -103,10 +101,12 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  
+  /* background-color: green; */
 }
 
+
 .start-quiz-button {
+  border: 10px solid;
   background-color: red;
   font-family: 'Roboto Mono', monospace;
   font-size: 1rem;

@@ -1,3 +1,19 @@
 body {  
+  margin: 0;
+  height: 100vh;
   background: linear-gradient(135deg, #6a0572 10%, #c449c2 50%, #f06292 90%);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#quiz-contianer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 500px;
+  height: 600px;
+  background-color: white;
+  border-radius: 30px;
 }

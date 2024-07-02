@@ -1,7 +1,9 @@
 
 const params = new URL(document.location).searchParams
 const id = params.get('id');
-let questionOrder = 1
+let questionOrder = 0;
+
+
 
 
 function fetchQuizQuestions() {
@@ -23,7 +25,7 @@ fetchQuizQuestions();
 
 function displayQuizQuestions(question) {
   console.log(question)
-  const quizContainer = document.getElementById('quiz-contianer');
+  const quizContainer = document.getElementById('quiz-container');
 
   const header = document.createElement('h2');
   header.innerText = `Question ${questionOrder}`;
@@ -35,33 +37,66 @@ function displayQuizQuestions(question) {
   quizContainer.append(header);
   quizContainer.append(questionDiv);
 
+
+  // 1. spread the correct answer and the incorrect answers in one array.
+  // 2. shuffle the asnwers.
   
-  for (let i = 0; i < question.incorrect_answers.length; i++) {
-    console.log(question.incorrect_answers[i]);
-    const incorrectAnswers = document.createElement('input');
-    incorrectAnswers.type = 'radio';
-    incorrectAnswers.name = 'answers';
-    const label = document.createElement('label');
-    label.innerText = question.incorrect_answers[i];
-
-    quizContainer.append(incorrectAnswers, label)
-    
-    }
-    
-  const correctAnswer = document.createElement('input');
-  correctAnswer.type = 'radio';
-  correctAnswer.name = 'answers';
-  const label = document.createElement('label');
-  label.innerText = question.correct_answer;
-
-
-  quizContainer.append(correctAnswer, label);
+  const randomisedAnswers = randomiseAnswers(question);
   
+  
+  // 3. display the answers as radio buttons. 
+  randomisedAnswers.forEach((answer) => {
+    const answerInput = document.createElement('input');
+    answerInput.type = 'radio';
+    answerInput.name = 'answers';
+    answerInput.value = answer;
+    const answerLabel = document.createElement('label');
+    answerLabel.innerText = answer;
+
+    quizContainer.append(answerInput, answerLabel);
+  })
 
   const submit = document.createElement('button');
   submit.innerText = 'submit';
   quizContainer.append(submit);
+  
 
+  submit.addEventListener('click', () => handleSubmitAnswer(question, submit));
 }
 
+
+function randomiseAnswers(question) {
+  let allAnswers = [question.correct_answer,...question.incorrect_answers];
+  allAnswers = allAnswers.sort(() => Math.random() - 0.5);
+  console.log(allAnswers)
+  return allAnswers;  
+  }
+  // console.log('allanswers 2 :>> ', allAnswers);
+  
+  
+  function handleSubmitAnswer(question, submit) {
+    const nothingSelected = document.querySelector('#nothing');
+    nothingSelected.innerText = '';
+    const selectedAnswer = document.querySelector('input[type="radio"]:checked');
+
+  if (selectedAnswer) {    
+    const userAnswer = selectedAnswer.value;
+    const feedback = document.createElement('div');
+
+    if (userAnswer === question.correct_answer) {
+      feedback.innerText = 'Correct!!';
+      feedback.style.color = 'green';
+    } else {
+      feedback.innerText = `Incorrect, the correct answer is: ${question.correct_answer}.`
+      feedback.style.color = 'red';
+    }  
+    const quizContainer = document.getElementById('quiz-container');
+    quizContainer.append(feedback);   
+    submit.disabled=true
+
+    } else {     
+      nothingSelected.innerText = 'No answers selected yet...'
+      nothingSelected.style.color = 'orange';      
+    }
+}
 

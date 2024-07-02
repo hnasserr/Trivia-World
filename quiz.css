@@ -8,12 +8,15 @@ body {
   align-items: center;
 }
 
-#quiz-contianer {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+.quiz-container {
   width: 500px;
   height: 600px;
   background-color: white;
   border-radius: 30px;
+}
+
+.questions {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }

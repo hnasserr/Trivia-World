@@ -1,6 +1,7 @@
 
 const params = new URL(document.location).searchParams
 const id = params.get('id');
+const difficulty = params.get('difficulty');
 let questionOrder = 0;
 
 
@@ -14,7 +15,7 @@ function fetchQuizQuestions() {
     })
     .then((result) => {
       console.log(result)
-      displayQuizQuestions(result.results[0]);      
+      displayQuizQuestions(result.results);      
     })
     .catch((error) => {
       console.log(error);
@@ -23,12 +24,13 @@ function fetchQuizQuestions() {
 
 fetchQuizQuestions();
 
-function displayQuizQuestions(question) {
+function displayQuizQuestions(questionArray) {
+  const question = questionArray[questionOrder];
   console.log(question)
   const quizContainer = document.getElementById('quiz-container');
-
+  quizContainer.innerHTML = '';
   const header = document.createElement('h2');
-  header.innerText = `Question ${questionOrder}`;
+  header.innerText = `Question ${questionOrder + 1}`;
   
   const questionDiv = document.createElement('div');
   questionDiv.innerHTML = question.question;
@@ -61,7 +63,7 @@ function displayQuizQuestions(question) {
   quizContainer.append(submit);
   
 
-  submit.addEventListener('click', () => handleSubmitAnswer(question, submit));
+  submit.addEventListener('click', () => handleSubmitAnswer(questionArray, question, submit));
 }
 
 
@@ -70,11 +72,11 @@ function randomiseAnswers(question) {
   allAnswers = allAnswers.sort(() => Math.random() - 0.5);
   console.log(allAnswers)
   return allAnswers;  
-  }
+}
   // console.log('allanswers 2 :>> ', allAnswers);
   
   
-  function handleSubmitAnswer(question, submit) {
+  function handleSubmitAnswer(questionArray, question, submit) {
     const nothingSelected = document.querySelector('#nothing');
     nothingSelected.innerText = '';
     const selectedAnswer = document.querySelector('input[type="radio"]:checked');
@@ -92,7 +94,9 @@ function randomiseAnswers(question) {
     }  
     const quizContainer = document.getElementById('quiz-container');
     quizContainer.append(feedback);   
-    submit.disabled=true
+    submit.disabled = true;
+    questionOrder++
+    setTimeout(() => {displayQuizQuestions(questionArray)}, 2000);
 
     } else {     
       nothingSelected.innerText = 'No answers selected yet...'

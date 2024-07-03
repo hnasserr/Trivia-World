@@ -1,0 +1,81 @@
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f9;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+}
+
+.quiz-container {
+  text-align: center;
+  max-width: 600px;
+  width: 80%;
+  background-color: #fff;
+  padding: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+}
+
+h2 {
+  color: #4caf50;
+}
+
+.questions {
+  margin-bottom: 20px;
+}
+
+label {
+  display: block;
+  margin: 10px 0;
+}
+
+input[type="radio"] {
+  margin-right: 10px;
+}
+
+button {
+  background-color: #4caf50;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  border-radius: 5px;
+  cursor: pointer;
+  margin: 10px;
+}
+
+button:disabled {
+  background-color: #ccc;
+}
+
+#nothing {
+  color: orange;
+  font-weight: bold;
+}
+
+.feedback {
+  font-weight: bold;
+}
+
+
+label {
+  display: block;
+  margin-bottom: 10px;
+  /* Adjust margin as needed for spacing between answers */
+}
+
+input[type="radio"] {
+  display: inline-block;
+  vertical-align: middle;
+  /* Align radios vertically with labels */
+  margin-right: 10px;
+}
+
+button {
+  display: block;
+  /* Ensure buttons take full width */
+  margin: 10px auto;
+  /* Center align buttons */
+}

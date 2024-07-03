@@ -1,22 +1,120 @@
-body {  
-  margin: 0;
-  height: 100vh;
+body {
+  font-family: Arial, sans-serif;
   background: linear-gradient(135deg, #6a0572 10%, #c449c2 50%, #f06292 90%);
   display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
+  height: 100vh;
+  margin: 0;
 }
 
 .quiz-container {
-  width: 500px;
-  height: 600px;
-  background-color: white;
-  border-radius: 30px;
+  text-align: center;
+  max-width: 600px;
+  width: 80%;
+  background-color: #fff;
+  padding: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+}
+
+h2 {
+  color: #4caf50;
 }
 
 .questions {
+  margin-bottom: 20px;
+}
+
+.question {
+  font-weight: bold;
+  font-size: 20px;
+}
+
+.answer-container {
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  justify-content: center;
+  margin: 40px 10px;
+}
+
+button {
+  display: block;
+  background-color: #4caf50;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  border-radius: 5px;
+  cursor: pointer;
+  margin: 10px auto;
+}
+
+button:disabled {
+  background-color: #ccc;
+}
+
+#nothing {
+  color: orange;
+  font-weight: bold;
+}
+
+.feedback {
+  font-weight: bold;
+}
+
+.score-section {
+  background-color: #f0f0f0;
+  border: 1px solid #ccc;
+  padding: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+}
+
+.score-section {
+  opacity: 0;
+  animation: fadeIn 0.5s ease forwards;
+}
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+  }
+}
+
+.score-section h2 {
+  font-size: 24px;
+  color: #333;
+}
+
+.score-section p {
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+
+.message {
+  font-weight: bold;
+  font-size: 18px;
+  margin-top: 10px;
+}
+
+.message.success {
+  color: green;
+}
+
+.message.fail {
+  color: red;
+}
+
+.categories-btn {
+  background-color: #4caf50;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+}
+
+.categories-btn:hover {
+  background-color: #45a049;
 }

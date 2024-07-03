@@ -37,27 +37,26 @@ function displayCards(categories) {
     const editedTitle = formatTitle(categories[i].name);
     title.innerText = editedTitle;
 
-    // const img = document.createElement('img');
-    // img.src = `assets/${categories[i].id}.png`
-    // img.alt = 'no img';
-    // img.classList.add('flip-card-img');
-
     const flipCardBack = document.createElement('div');
     flipCardBack.classList.add('flip-card-back');
 
+
+    const dropDown = createDropdown();
+    
+    dropDown.addEventListener('change', () => {
+      startQuizButton.href = `quiz.html?id=${categories[i].id}&difficulty=${dropDown.value}`
+    })
+
+
     const buttonDiv = document.createElement('div');
     buttonDiv.classList.add('start-button-div');
-    const startQuizButton = document.createElement('a');
-
-    startQuizButton.href = `quiz.html?id=${categories[i].id}&difficulty=medium`
-    startQuizButton.innerText = 'Start Quiz!'
-    startQuizButton.classList.add('start-quiz-button');
+  
+    const startQuizButton = createStartQuizButton(categories[i].id);
     
     flipCardFront.append(title);
     buttonDiv.append(startQuizButton)
-    flipCardBack.append(buttonDiv);
-    flipCardInner.append(flipCardFront);
-    flipCardInner.append(flipCardBack);
+    flipCardBack.append(buttonDiv, dropDown);
+    flipCardInner.append(flipCardFront, flipCardBack);
     flipCard.append(flipCardInner);
     div.append(flipCard);
   }
@@ -73,5 +72,35 @@ function formatTitle(title) {
   } else {
     return title;
   }
+}
+
+function createDropdown() {
+  const dropDown = document.createElement('select');
+  dropDown.classList.add('difficulty-dropdown');
+
+  const easyOption = document.createElement('option');
+  easyOption.value = 'easy';
+  easyOption.textContent = 'Easy';
+
+  const mediumOption = document.createElement('option');
+  mediumOption.value = 'medium';
+  mediumOption.textContent = 'Medium';
+
+  const hardOption = document.createElement('option');
+  hardOption.value = 'hard';
+  hardOption.textContent = 'Hard';
+
+  dropDown.append(easyOption, mediumOption, hardOption);
+  return dropDown;
+}
+
+function createStartQuizButton(categoryId) {
+  const startQuizButton = document.createElement('a');
+
+  startQuizButton.href = `quiz.html?id=${categoryId}&difficulty=easy`
+  startQuizButton.innerText = 'Start Quiz!'
+  startQuizButton.classList.add('start-quiz-button');
+  
+  return startQuizButton;
 }
 

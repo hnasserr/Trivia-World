@@ -1,6 +1,7 @@
 
 const params = new URL(document.location).searchParams
 const id = params.get('id');
+const difficulty = params.get('difficulty');
 let questionOrder = 0;
 let correctAnswersCount = 0;
 let incorrectAnswersCount = 0;
@@ -10,7 +11,7 @@ let incorrectAnswersCount = 0;
 
 function fetchQuizQuestions() {
   console.log(id)
-  fetch(`https://opentdb.com/api.php?amount=5&category=${id}&difficulty=medium&type=multiple`)
+  fetch(`https://opentdb.com/api.php?amount=5&category=${id}&difficulty=${difficulty}&type=multiple`)
     .then((response) => {
       return response.json();
     })

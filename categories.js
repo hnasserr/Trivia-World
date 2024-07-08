@@ -19,7 +19,7 @@ fetchCategories();
 
 function displayCards(categories) {
   //Get the categoriesContainer from HTML and save it in a variable.
-  const div = document.getElementById('categoriesContainer');
+  const parentDiv = document.getElementById('categoriesContainer');
   console.log(categories);
 
   for (let i = 0; i < categories.length; i++) {
@@ -42,10 +42,23 @@ function displayCards(categories) {
 
 
     const dropDown = createDropdown();
+    // dropDown.classList.add('closed');
     
     dropDown.addEventListener('change', () => {
       startQuizButton.href = `quiz.html?id=${categories[i].id}&difficulty=${dropDown.value}`
     })
+
+    // there's a lag when we apply on flipcardback;
+    flipCard.addEventListener('mouseover', () => {
+      dropDown.classList.add('opened');
+      dropDown.classList.remove('closed');
+    })
+
+    flipCard.addEventListener('mouseleave', () => {
+      dropDown.classList.remove('opened');
+      dropDown.classList.add('closed');
+    })
+  
 
 
     const buttonDiv = document.createElement('div');
@@ -58,7 +71,7 @@ function displayCards(categories) {
     flipCardBack.append(buttonDiv, dropDown);
     flipCardInner.append(flipCardFront, flipCardBack);
     flipCard.append(flipCardInner);
-    div.append(flipCard);
+    parentDiv.append(flipCard);
   }
 }
 

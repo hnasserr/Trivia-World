@@ -144,11 +144,12 @@ body {
 
 .difficulty-dropdown:focus {
   outline: none;
+} 
+
+.difficulty-dropdown.opened {
+  display: block;
 }
 
-.difficulty-dropdown:after {
-  content: '\25BE';
-  display: inline-block;
-  margin-left: 0.5rem; 
-  transform: translateY(1px);
+.difficulty-dropdown.closed {
+  display: none;
 }

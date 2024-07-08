@@ -1,0 +1,6 @@
+.difficulty-dropdown:after {
+  content: '\25BE';
+  display: inline-block;
+  margin-left: 0.5rem;
+  transform: translateY(1px);
+}

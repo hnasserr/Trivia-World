@@ -3,6 +3,7 @@ body {
   background: linear-gradient(135deg, #6a0572 10%, #c449c2 50%, #f06292 90%);
   display: flex;
   justify-content: center;
+  flex-direction: column;
   align-items: center;
   height: 100vh;
   margin: 0;
@@ -56,6 +57,32 @@ button:disabled {
 #nothing {
   color: orange;
   font-weight: bold;
+}
+
+.button-link {
+  display: inline-block;
+  padding: 10px 20px;
+  margin: 20px 0;
+  font-family: 'Roboto Mono', monospace;
+  font-size: 1rem;
+  color: white;
+  background-color: #2980b9;
+  border: none;
+  border-radius: 30px;
+  text-decoration: none;
+  text-align: center;
+  cursor: pointer;
+  transition: transform 0.2s, background-color 0.3s;
+}
+
+.button-link:hover {
+  transform: translateY(-5px);
+  background-color: #3498db;
+}
+
+.button-link:active {
+  transform: translateY(1px);
+  background-color: #1f78b4;
 }
 
 .feedback {
@@ -118,3 +145,4 @@ button:disabled {
 .categories-btn:hover {
   background-color: #45a049;
 }
+

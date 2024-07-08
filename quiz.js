@@ -1,7 +1,4 @@
 
-const params = new URL(document.location).searchParams
-const id = params.get('id');
-const difficulty = params.get('difficulty');
 let questionOrder = 0;
 let correctAnswersCount = 0;
 let incorrectAnswersCount = 0;
@@ -10,6 +7,10 @@ let incorrectAnswersCount = 0;
 
 
 function fetchQuizQuestions() {
+  const params = new URL(document.location).searchParams
+  const id = params.get('id');
+  const difficulty = params.get('difficulty');
+
   console.log(id)
   fetch(`https://opentdb.com/api.php?amount=5&category=${id}&difficulty=${difficulty}&type=multiple`)
     .then((response) => {
@@ -48,7 +49,7 @@ function displayQuizQuestions(questionsArray) {
   // 3. display the answers as radio buttons. 
 
   
-  const randomisedAnswers = randomiseAnswers(question);
+  const randomisedAnswers = randomizeAnswers(question);
   
 
   randomisedAnswers.forEach((answer) => {
@@ -59,8 +60,9 @@ function displayQuizQuestions(questionsArray) {
     answerInput.name = 'answers';
     answerInput.value = answer;
     const answerLabel = document.createElement('label');
-    answerLabel.innerText = answer;
-    answerContainer.append(answerInput, answerLabel)
+    // answerLabel.innerText = answer;
+    answerLabel.innerHTML = answer;
+    answerContainer.append(answerInput, answerLabel);
     quizContainer.append(answerContainer);
   })
 
@@ -73,7 +75,7 @@ function displayQuizQuestions(questionsArray) {
 }
 
 
-function randomiseAnswers(question) {
+function randomizeAnswers(question) {
   let allAnswers = [...question.incorrect_answers, question.correct_answer];
   allAnswers = allAnswers.sort(() => Math.random() - 0.5);
   console.log(allAnswers)
@@ -140,13 +142,13 @@ function displayFinalScore(quizContainer) {
 
   const message = document.createElement('p');
   
-  message.textContent = correctAnswersCount >= 3? 
+  message.textContent = correctAnswersCount >= 3 ? 
   'Well done! You did great. 🔥': 
   'Better luck next time. Keep learning. ☠️'
   
   message.classList.add('message');
   message.classList.add((correctAnswersCount >= 3) ? 'success' : 'fail')
- 
+
   
   scoreSection.append(message);
   quizContainer.append(scoreSection);
@@ -158,6 +160,11 @@ function displayFinalScore(quizContainer) {
   categoriesBtn.addEventListener('click', () => {
     window.location.href = 'categories.html';
   })
+
+  const categoriesbuttonLink = document.querySelector('.button-link');
+  if (categoriesbuttonLink) {
+    categoriesbuttonLink.remove();
+  }
 
   quizContainer.append(categoriesBtn);
   

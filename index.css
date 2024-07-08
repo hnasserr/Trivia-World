@@ -37,11 +37,13 @@ header {
   border: none;
   transition: transform 0.3s, background-color 0.3s;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  animation: pulse 2s ease-in-out infinite;
 }
 
 #start-button a:hover {
   background-color: #ff4a3d;
   transform: translateY(-5px);
+  animation-play-state: paused;
 }
 
 @keyframes fadeIn {

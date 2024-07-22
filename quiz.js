@@ -143,8 +143,8 @@ function displayFinalScore(quizContainer) {
   const message = document.createElement('p');
   
   message.textContent = correctAnswersCount >= 3 ? 
-  'Well done! You did great. 🔥': 
-  'Better luck next time. Keep learning. ☠️'
+  'Well done! You did great Ya aarsa. 🔥': 
+  'Ayre bi khlousak ya wael ☠️'
   
   message.classList.add('message');
   message.classList.add((correctAnswersCount >= 3) ? 'success' : 'fail')

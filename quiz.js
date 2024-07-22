@@ -143,7 +143,7 @@ function displayFinalScore(quizContainer) {
   const message = document.createElement('p');
   
   message.textContent = correctAnswersCount >= 3 ? 
-  'Well done! You did great Ya aarsa. 🔥': 
+  'Cozooooooooo! You did great Ya aarsa. 🔥': 
   'Ayre bi khlousak ya wael ☠️'
   
   message.classList.add('message');
